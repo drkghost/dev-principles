@@ -21,7 +21,7 @@ public class Animal
 </p>
 </details>
 <details>
-<summary>**GOOD**</summary>
+<summary><b>GOOD</b></summary>
 <p>
 	
 ```csharp 
@@ -44,7 +44,10 @@ public class AnimalRepository
 
 software entities (classes, modules, functions, etc.) should be open for extension, but closed for modification
 
-**BAD**
+<details>
+<summary><b>BAD</b></summary>
+<p>
+
 ```csharp 
 public class Animal
 {
@@ -68,7 +71,12 @@ public string AnimalSound(List<Animal> animals)
 }
 ```
 
-**GOOD**
+</p>
+</details>
+<details>
+<summary><b>GOOD</b></summary>
+<p>
+
 ```csharp 
 public class Animal
 {
@@ -97,38 +105,74 @@ public string AnimalSound(List<Animal> animals)
 }
 ```
 
+</p>
+</details>
+
 - [L] Liskov substitution principle
 
 the inherited class should complement, not replace, the behavior of the base class;
 in general, should be possible to replace parent class with child class without affecting of program execution
 
-**BAD**
+<details>
+<summary><b>BAD</b></summary>
+<p>
+
 ```csharp
 ```
 
-**GOOD**
+</p>
+</details>
+<details>
+<summary><b>GOOD</b></summary>
+<p>
+
 ```csharp
 ```
+
+</p>
+</details>
 
 - [I] Interface segregation principle
 
-**BAD**
+<details>
+<summary><b>BAD</b></summary>
+<p>
+
 ```csharp
 ```
 
-**GOOD**
+</p>
+</details>
+<details>
+<summary><b>GOOD</b></summary>
+<p>
+
 ```csharp
 ```
+
+</p>
+</details>
 
 - [D] Dependency Inversion Principle
 
-**BAD**
+<details>
+<summary><b>BAD</b></summary>
+<p>
+
 ```csharp
 ```
 
-**GOOD**
+</p>
+</details>
+<details>
+<summary><b>GOOD</b></summary>
+<p>
+
 ```csharp
 ```
+
+</p>
+</details>
 
 ## DRY - Don't Repeat Yourself
 
