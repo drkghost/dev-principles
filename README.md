@@ -1,12 +1,12 @@
 # The common dev principles
 
 ## SOLID
-- S Single-responsiblity principle
+- [S] Single-responsiblity principle
 
 every module or class should have responsibility for a single part of the functionality provided by the software and that responsibility should be entirely encapsulated by the class;
 
-BAD
-```
+**BAD**
+```csharp 
 public class Animal
 {
 	public Animal() { }
@@ -15,8 +15,8 @@ public class Animal
 }
 ```
 
-GOOD
-```
+**GOOD**
+```csharp 
 public class Animal
 {
 	public Animal() { }
@@ -29,9 +29,66 @@ public class AnimalRepository
 }
 ```
 
-- O Open-closed principle
-- L Liskov substitution principle
-- I Interface segregation principle
+- [O] Open-closed principle
+
+software entities (classes, modules, functions, etc.) should be open for extension, but closed for modification
+
+**BAD**
+```csharp 
+public class Animal
+{
+	public Animal(string name) { }
+	public string GetAnimalName() { }
+}
+var animals = new List<Animal>() 
+{
+	new Animal("lion"),
+	new Animal("mouse")
+}
+public string AnimalSound(List<Animal> animals)
+{
+	foreach(var a in animals)		
+	{
+		if(a.GetAnimalName() == "lion")
+			return "roar";
+		if (a.GetAnimalName() == "mouse")
+			return "squeak";
+	}
+}
+```
+
+**GOOD**
+```csharp 
+public class Animal
+{
+	public Animal(string name) { }
+	public string GetAnimalName() { }
+	public virtual string MakeSound() {}
+}
+public class Lion : Animal
+{
+	public new string MakeSound() => "roar";
+}
+public class Squirrel : Animal
+{
+	public new string MakeSound() => "squeak";
+}
+public class Snake : Animal
+{
+	public new string MakeSound() => "hiss";
+}
+public string AnimalSound(List<Animal> animals)
+{
+	foreach (var a in animals)
+	{
+		a.MakeSound();
+	}
+}
+```
+
+
+- [L] Liskov substitution principle
+- [I] Interface segregation principle
 - D Dependency Inversion Principle
 
 ## DRY - Don't Repeat Yourself
