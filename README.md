@@ -118,6 +118,33 @@ in general, should be possible to replace parent class with child class without 
 <p>
 
 ```csharp
+public abstract class Employee
+{
+  public virtual string GetWorkDetails(int id) => "Base Work"
+  public virtual string GetEmployeeDetails(int id) => "Base Employee";        
+}
+public class SeniorEmployee : Employee
+{
+  public override string GetWorkDetails(int id) => "Senior Work";
+  public override string GetEmployeeDetails(int id) => "Senior Employee";
+}
+public class JuniorEmployee : Employee
+{
+  public override string GetWorkDetails(int id)
+  {
+    throw new NotImplementedException();        
+  }
+  public override string GetEmployeeDetails(int id) => "Junior Employee";
+}
+...
+List<Employee> list = new List<Employee>();
+list.Add(new JuniorEmployee());
+list.Add(new SeniorEmployee());
+foreach (Employee emp in list)
+{
+    emp.GetWorkDetails(985);
+}
+
 ```
 
 </p>
@@ -127,6 +154,23 @@ in general, should be possible to replace parent class with child class without 
 <p>
 
 ```csharp
+public interface IEmployee
+{
+    string GetEmployeeDetails(int employeeId);
+}
+public interface IWork
+{
+    string GetWorkDetails(int employeeId);
+}
+public class SeniorEmployee : IWork, IEmployee
+{
+    public string GetWorkDetails(int employeeId) => "Senior Work";
+    public string GetEmployeeDetails(int employeeId) => "Senior Employee";
+}
+public class JuniorEmployee : IEmployee
+{
+	public string GetEmployeeDetails(int employeeId) => "Junior Employee";	
+}
 ```
 
 </p>
