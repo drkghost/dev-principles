@@ -2,6 +2,33 @@
 
 ## SOLID
 - S Single-responsiblity principle
+
+every module or class should have responsibility for a single part of the functionality provided by the software and that responsibility should be entirely encapsulated by the class;
+
+BAD
+```
+public class Animal
+{
+	public Animal() { }
+	public string GetAnimalName() { }
+	public SaveAnimal(Animal a) {}
+}
+```
+
+GOOD
+```
+public class Animal
+{
+	public Animal() { }
+	public string GetAnimalName() { }
+}
+public class AnimalRepository
+{
+	public Animal GetAnimal(string name) { }
+	public Animal SaveAnimal(Animal a) { }
+}
+```
+
 - O Open-closed principle
 - L Liskov substitution principle
 - I Interface segregation principle
@@ -50,3 +77,4 @@ better to crash application than allow it continue to work in case of critical e
 ## Links: 
 https://www.idginsiderpro.com/article/3233866/12-essential-software-development-principles-and-concepts.html
 https://dev.to/luminousmen/what-are-the-best-software-engineering-principles--3p8n
+https://medium.com/webbdev/solid-4ffc018077da
