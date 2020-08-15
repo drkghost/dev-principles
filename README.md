@@ -6,7 +6,7 @@
 every module or class should have responsibility for a single part of the functionality provided by the software and that responsibility should be entirely encapsulated by the class;
 
 <details>
-<summary>**BAD**</summary>
+<summary><b>BAD</b></summary>
 <p>		
 
 ```csharp 
