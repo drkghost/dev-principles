@@ -1,7 +1,7 @@
 # The common dev principles
 
 ## SOLID
-- [S] Single-responsiblity principle
+#### [S] Single-responsiblity principle
 
 every module or class should have responsibility for a single part of the functionality provided by the software and that responsibility should be entirely encapsulated by the class;
 
@@ -40,7 +40,7 @@ public class AnimalRepository
 </p>
 </details>
 
-- [O] Open-closed principle
+#### [O] Open-closed principle
 
 software entities (classes, modules, functions, etc.) should be open for extension, but closed for modification
 
@@ -108,9 +108,10 @@ public string AnimalSound(List<Animal> animals)
 </p>
 </details>
 
-- [L] Liskov substitution principle
+#### [L] Liskov substitution principle
 
 the inherited class should complement, not replace, the behavior of the base class;
+
 in general, should be possible to replace parent class with child class without affecting of program execution
 
 <details>
@@ -142,7 +143,7 @@ list.Add(new JuniorEmployee());
 list.Add(new SeniorEmployee());
 foreach (Employee emp in list)
 {
-    emp.GetWorkDetails(985);
+  emp.GetWorkDetails(985);
 }
 
 ```
@@ -156,27 +157,27 @@ foreach (Employee emp in list)
 ```csharp
 public interface IEmployee
 {
-    string GetEmployeeDetails(int employeeId);
+  string GetEmployeeDetails(int employeeId);
 }
 public interface IWork
 {
-    string GetWorkDetails(int employeeId);
+  string GetWorkDetails(int employeeId);
 }
 public class SeniorEmployee : IWork, IEmployee
 {
-    public string GetWorkDetails(int employeeId) => "Senior Work";
-    public string GetEmployeeDetails(int employeeId) => "Senior Employee";
+  public string GetWorkDetails(int employeeId) => "Senior Work";
+  public string GetEmployeeDetails(int employeeId) => "Senior Employee";
 }
 public class JuniorEmployee : IEmployee
 {
-	public string GetEmployeeDetails(int employeeId) => "Junior Employee";	
+  public string GetEmployeeDetails(int employeeId) => "Junior Employee";	
 }
 ```
 
 </p>
 </details>
 
-- [I] Interface segregation principle
+#### [I] Interface segregation principle
 
 <details>
 <summary><b>BAD</b></summary>
@@ -197,7 +198,7 @@ public class JuniorEmployee : IEmployee
 </p>
 </details>
 
-- [D] Dependency Inversion Principle
+#### [D] Dependency Inversion Principle
 
 <details>
 <summary><b>BAD</b></summary>
