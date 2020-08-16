@@ -443,6 +443,12 @@ don't handle all errors, your software should crash boldly and horribly if an er
 
 better to crash application than allow it continue to work in case of critical exception has been thrown
 
+## TIMTOWTDI - There's more than one way to do it
+
+a Perl programming motto
+
+In contrast, part of the Zen of Python is, "There should be one — and preferably only one — obvious way to do it."
+
 ## Links: 
 
 https://www.idginsiderpro.com/article/3233866/12-essential-software-development-principles-and-concepts.html
