@@ -260,7 +260,7 @@ class EmailMessage : IEmailMessage
 
   public void Send()
   {
-    Console.WriteLine("Отправляем по Email сообщение: {0}", Text);
+    Console.WriteLine("Send email message: {0}", Text);
   }
 }
 class SmsMessage : ITextMessage
@@ -270,7 +270,7 @@ class SmsMessage : ITextMessage
   public string ToAddress { get; set; }
   public void Send()
   {
-    Console.WriteLine("Отправляем по Sms сообщение: {0}", Text);
+    Console.WriteLine("Send sms message: {0}", Text);
   }
 }
 ```
@@ -354,23 +354,70 @@ class HtmlPrinter : IPrinter
 
 ## DRY - Don't Repeat Yourself
 
+aimed at reducing repetition of software patterns, replacing it with abstractions or using data normalization to avoid redundancy
+
+Every piece of knowledge must have a single, unambiguous, authoritative representation within a system
+
+if you find that you're cutting and pasting a block of code into multiple places, your design is flawed and you should fix that first.
+
 ## KISS - Keep It Simple, Stupid
+
+most systems work best if they are kept simple rather than made complicated; therefore, simplicity should be a key goal in design, and unnecessary complexity should be avoided
 
 ## YAGNI - You Aren't Gonna Need It 
 
+a programmer should not add functionality until deemed necessary
+
+Always implement things when you actually need them, never when you just foresee that you need them.
+
+## CQS, CQRS - Command Query Responsibility Segregation 
+
+separates read and update operations for a data store
+
+TBA
+
 ## SLAP - Single Level of Abstraction Principle
+
+you should organize your code (functions to be specific) to keep it maintainable
+
+Long and complex functions are hard to live with. They're difficult to understand for others, are hard to test and often require scrolling to see all of their content
+
+Functions should do just one thing, and they should do it well. Robert Martin
+
+Example: a function that reads the user input, shouldn't also process it
 
 ## GRASP - General Responsibility Assignment Software Patterns
 
+group of patterns for assigning responsibility to classes and objects in object-oriented design
+- Information Expert
+- Creator
+- Controller
+- Low Coupling
+- High Cohesion
+- Pure Fabrication
+- Indirection
+- Polymorphism
+- Protected Variations
+
+TBA
+
 ## BDUF – Big Design Up Front
+
+the program's design is to be completed and perfected before that program's implementation is started
+
+often associated with the waterfall model of software development
 
 ## SOC – Separation of Concerns
 
+don’t write your program as one solid block, instead, break up the code into chunks that are finalized tiny pieces of the system each able to complete a simple distinct job
+
 ## TDA - Tell don’t ask
+
+we should not ask object about their state, make decision and only then tell them what to do. Rather we should send commands
 
 ## WET - We enjoy typing
 
-## Accountability without authority
+anti-pattern, against to DRY. "write every time", "write everything twice", "we enjoy typing" or "waste everyone's time"
 
 ## MVP - Minimum viable product
 
@@ -396,9 +443,6 @@ don't handle all errors, your software should crash boldly and horribly if an er
 
 better to crash application than allow it continue to work in case of critical exception has been thrown
 
-
-
-
 ## Links: 
 
 https://www.idginsiderpro.com/article/3233866/12-essential-software-development-principles-and-concepts.html
@@ -409,4 +453,8 @@ https://medium.com/webbdev/solid-4ffc018077da
 
 https://metanit.com/
 
+https://bool.dev/blog/detail/grasp-printsipy#expert
 
+https://nalexn.github.io/separation-of-concerns/
+
+http://rubyblog.pro/2016/09/tell-dont-ask-principle
