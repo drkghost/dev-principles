@@ -145,7 +145,6 @@ foreach (Employee emp in list)
 {
   emp.GetWorkDetails(985);
 }
-
 ```
 
 </p>
@@ -179,11 +178,56 @@ public class JuniorEmployee : IEmployee
 
 #### [I] Interface segregation principle
 
+no client should be forced to depend on methods it does not use
+
 <details>
 <summary><b>BAD</b></summary>
 <p>
 
 ```csharp
+interface IMessage
+{
+  void Send();
+  string Text { get; set;}
+  string Subject { get; set;}
+  string ToAddress { get; set; }
+  string FromAddress { get; set; }
+}
+class EmailMessage : IMessage
+{
+  public string Subject { get; set; }
+  public string Text { get; set; }
+  public string FromAddress { get; set; }
+  public string ToAddress { get; set; }
+ 
+  public void Send()
+  {
+    Console.WriteLine("Send email message: {0}", Text);
+  }
+}
+class SmsMessage : IMessage
+{
+  public string Text { get; set; }
+  public string FromAddress { get; set; }
+  public string ToAddress { get; set; }
+        
+  public string Subject
+  {
+    get
+    {
+      throw new NotImplementedException();
+    } 
+    set
+    {
+      throw new NotImplementedException();
+    }
+  }
+ 
+  public void Send()
+  {
+    Console.WriteLine("Send sms message: {0}", Text);
+  }
+}
 ```
 
 </p>
@@ -193,6 +237,42 @@ public class JuniorEmployee : IEmployee
 <p>
 
 ```csharp
+interface IMessage
+{
+  void Send();
+  string ToAddress { get; set; }
+  string FromAddress { get; set; }
+}
+interface ITextMessage : IMessage
+{
+  string Text { get; set; }
+}
+interface IEmailMessage : ITextMessage
+{
+  string Subject { get; set; }
+}
+class EmailMessage : IEmailMessage
+{
+  public string Text { get; set; }
+  public string Subject { get; set; }
+  public string FromAddress { get; set; }
+  public string ToAddress { get; set; }
+
+  public void Send()
+  {
+    Console.WriteLine("Отправляем по Email сообщение: {0}", Text);
+  }
+}
+class SmsMessage : ITextMessage
+{
+  public string Text { get; set; }
+  public string FromAddress { get; set; }
+  public string ToAddress { get; set; }
+  public void Send()
+  {
+    Console.WriteLine("Отправляем по Sms сообщение: {0}", Text);
+  }
+}
 ```
 
 </p>
@@ -200,11 +280,33 @@ public class JuniorEmployee : IEmployee
 
 #### [D] Dependency Inversion Principle
 
+programmer should work at the interface level and not at the implementation level
+
+High-level modules should not depend on low-level modules. Both should depend on abstractions (e.g. interfaces)
+
+Abstractions should not depend on details. Details (concrete implementations) should depend on abstractions
+
 <details>
 <summary><b>BAD</b></summary>
 <p>
 
 ```csharp
+class Book
+{
+  public string Text { get; set; }
+  public ConsolePrinter Printer { get; set; } 
+  public void Print()
+  {
+    Printer.Print(Text);
+  }
+} 
+class ConsolePrinter
+{
+  public void Print(string text)
+  {
+    Console.WriteLine(text);
+  }
+}
 ```
 
 </p>
@@ -214,6 +316,37 @@ public class JuniorEmployee : IEmployee
 <p>
 
 ```csharp
+interface IPrinter
+{
+  void Print(string text);
+} 
+class Book
+{
+  public string Text { get; set; }
+  public IPrinter Printer { get; set; } 
+  public Book(IPrinter printer)
+  {
+    this.Printer = printer;
+  } 
+  public void Print()
+  {
+    Printer.Print(Text);
+  }
+} 
+class ConsolePrinter : IPrinter
+{
+  public void Print(string text)
+  {
+    Console.WriteLine("Print to console");
+  }
+} 
+class HtmlPrinter : IPrinter
+{
+  public void Print(string text)
+  {
+    Console.WriteLine("Print to html");
+  }
+}
 ```
 
 </p>
@@ -273,3 +406,7 @@ https://www.idginsiderpro.com/article/3233866/12-essential-software-development-
 https://dev.to/luminousmen/what-are-the-best-software-engineering-principles--3p8n
 
 https://medium.com/webbdev/solid-4ffc018077da
+
+https://metanit.com/
+
+
