@@ -1,7 +1,7 @@
 # The common dev principles
 
 ## SOLID
-#### [S] Single-responsiblity principle
+#### [S] Single-responsibility principle
 
 every module or class should have responsibility for a single part of the functionality provided by the software and that responsibility should be entirely encapsulated by the class;
 
