@@ -6,7 +6,7 @@ object oriented design with responsibilities.
 
 
 
-#### Information Expert
+### Information Expert
 
 you should assign a responsibility to the class which has the information necessary to fulfill that responsibility.
 
@@ -29,7 +29,7 @@ public class Customer
 </p>
 </details>
 
-#### Creator
+### Creator
 
 Assign class B the responsibility to create an instance of class A if one of these is true (the more the better):
 - B “contains” or compositely aggregates A.
@@ -57,7 +57,7 @@ public class Customer
 </p>
 </details>
 
-#### Controller
+### Controller
 
 Assign the responsibility to a class representing one of the following choices:
 
@@ -66,7 +66,7 @@ Assign the responsibility to a class representing one of the following choices:
 
 A UI enables users to perform system operations. A Controller is the first object after the UI layer that handles the system operations requests, and then delegates the responsibility to the underlying domain objects.
 
-#### Low Coupling
+### Low Coupling
 
 Coupling is a measure of how strongly one element is connected to, has knowledge of, or relies on other elements. Low coupling is an evaluative pattern that dictates how to assign responsibilities for the following benefits:
 
@@ -74,29 +74,29 @@ Coupling is a measure of how strongly one element is connected to, has knowledge
 - change in one class having a lower impact on other classes,
 - higher reuse potential.
 
-#### High Cohesion
+### High Cohesion
 
 keep objects appropriately focused, manageable and understandable
 
 the responsibilities of a given element are strongly related and highly focused (SRP)
 
-#### Pure Fabrication
+### Pure Fabrication
 
 problem: the domain model for a banking system contains classes like Account, Branch, Cash, Check, Transaction, etc. Need to store information about the customers
 
 solution: to introduce another class which does not represent any domain concept, “PersistenceProvider.”
 
-#### Indirection
+### Indirection
 
 Problem: Where to assign responsibility, to avoid direct coupling between two (or more) things? How to de-couple objects so that low coupling is supported and reuse potential remains higher?
 
 Solution: Assign the responsibility to an intermediate object to mediate between other components or services so that they are not directly coupled. 
 
-#### Polymorphism
+### Polymorphism
 
 restricts the use of run-time type identification (RTTI)
 
-#### Protected Variations
+### Protected Variations
 
 How to design objects, subsystems, and systems so that the variations or instability in these elements does not have an undesirable impact on other elements?
 
