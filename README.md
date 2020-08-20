@@ -386,21 +386,6 @@ Functions should do just one thing, and they should do it well. Robert Martin
 
 Example: a function that reads the user input, shouldn't also process it
 
-## GRASP - General Responsibility Assignment Software Patterns
-
-group of patterns for assigning responsibility to classes and objects in object-oriented design
-- Information Expert
-- Creator
-- Controller
-- Low Coupling
-- High Cohesion
-- Pure Fabrication
-- Indirection
-- Polymorphism
-- Protected Variations
-
-TBA
-
 ## BDUF – Big Design Up Front
 
 the program's design is to be completed and perfected before that program's implementation is started
